@@ -4,18 +4,132 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/homepage.css"/>
     <title>Document</title>
 </head>
 <body>
- <nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="sales.html">Sales</a></li>
-        <li><a href="shop.html">Shop</a></li>
+    <nav>
         
-    </ul>
+        <a href="index.html">Home</a></li>
+        <a href="sales.html">Sales</a></li>
+        <a href="shop.html">Shop</a></li>
+        
+    
+</nav>
+<main>
+    <body>
+      <h1>Pat's Salmon Cookies Gift Shop</h1>
+<img src="assets/cookiess.jpg">
+<h1>Pat's World Famous Salmon Cookies</h1>
+
+<img src="assets/hat.jpg">
+<h1>Salmon Baseball Cap</h1>
+    </main>
+<aside>
+<img src="assets/shirt.jpg">
+<h1>Salmon T-Shirt</h1>
+<img src="assets/salmontoys.jpg">
+<h1>Life Cycle of a Salmon 5 pc Toy Set</h1>
+
+<img src="assets/rainbowsalmon.jpg">
+<h1>Realistic Rainbow Salmon Plushie</h1>
+    
+</aside>
 
 
- </nav>   
+
+            <label for="cookie">One Dozen Salmon Cookies - $12.49</label>
+            <select id="cookie">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="shirt">T-Shirt - $25.99</label>
+            <select id="shirt">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div>
+            <label for="toy">Life Cycle of a Salmon 5 pc Toy Set - $15.14 </label>
+            <select id="toy">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="cap">Salmon Baseball Cap - $9.00</label>
+            <select id="cap">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="plushie">Realistic Rainbow Salmon Plushie - $15.00 </label>
+            <select id="plushie">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+    
+         
+          <h3>Cost</h3>
+          <div>
+            $<input type="text" id="cost" value="0" readonly size="3"/>
+          </div>
+          
+          <div>
+            <input type="submit" />
+          </div>
+        </form>
+     
+        <script type="text/javascript">
+          function updateTotal(){
+            let tot = 0;
+            tot += f.cookie.value * 12.49 +
+                   f.shirt.value * 25.99 +
+                   f.toy.value * 15.14 +
+                   f.cap.value * 9 +
+                   f.plushie.value * 15;
+            document.getElementById("cost").value = tot.toFixed(2);
+          }
+          
+          let f = document.forms['myForm'];
+          let sel = document.getElementsByTagName("select");
+    
+          for(let i=0; i<sel.length; i++) {
+            sel[i].onchange = function(){updateTotal()};
+          }
+          
+          f.onsubmit = function(){
+            alert("Your total cost will be: \\$" + f.cost.value);
+            return true;
+          }
+        </script>
+       
 </body>
 </html>

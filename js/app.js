@@ -1,20 +1,5 @@
-const biznessHours = [
-    "6am",
-    "7am",
-    "8am",
-    "9am",
-    "10am",
-    "11am",
-    "12pm",
-    "1pm",
-    "2pm",
-    "3pm",
-    "4pm",
-    "5pm",
-    "6pm",
-    "7pm",
-    "8pm",
-  ];
+const biznessHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+    
   
   class Shop {
     constructor(city, minCustomers, maxCustomers, cookiesPerCustomer) {
@@ -55,6 +40,28 @@ const biznessHours = [
       hourlySales.push(this.dailyCookieTotal);
       // this.dailyCookieCount = hourlySales;
       return hourlySales;
+    }
+    renderList() {
+   
+      const sales = this.dailyCookieCount;
+      // capture DOM element for heading that corresponds to this object's city property
+      const cityHeading = document.querySelector(`.${this.city}-heading`);
+      // set what'll display on the screen for cityHeading to city property
+      cityHeading.textContent = this.city;
+      // capture DOM element for list that corresponds to this object's city property
+      const unorderedList = document.querySelector(`.${this.city}-sales`);
+      for (let i = 0; i < biznessHours.length; i++) {
+      
+        const listItem = document.createElement('li');
+        // set what'll display on the screen to string that incorporates current business hour and it's corresponding sales
+        listItem.textContent = `${biznessHours[i]}: ${sales[i]} cookies`;
+        // append listItem element to end of unorderedList
+        unorderedList.appendChild(listItem);
+      }
+      // create element for total cookies sold in a day, set it's text content, then append to unorderedList
+      const total = document.createElement('li');
+      total.textContent = `Total: ${this.dailyCookieTotal} cookies`;
+      unorderedList.appendChild(total);
     }
   
     renderTable() {
@@ -133,7 +140,7 @@ const biznessHours = [
     }
     // append footerRow to table in DOM
     salesTable.appendChild(footerRow);
-  };
+  }
   
   let seattle = new Shop("Seattle", 23, 65, 6.3);
   let tokyo = new Shop("Tokyo", 3, 24, 1.2);
@@ -158,7 +165,7 @@ const biznessHours = [
       shop.renderTable();
     }
     tableRowFooter(allCookieSales);
-  };
+  }
   
   generateTable();
   
@@ -171,7 +178,7 @@ const biznessHours = [
     
     let messages = [];
     if (parseInt(minCustomers) > parseInt(maxCustomers)) {
-      messages.push('Minumum customers per hour cannot be greater than maximum customers per hour')
+      messages.push('Minimum customers per hour cannot be greater than maximum customers per hour')
     }
     if (messages.length > 0) {
       console.log(messages);
@@ -186,4 +193,4 @@ const biznessHours = [
   }
   
   const form = document.querySelector('#form');
-  form.addEventListener('submit', appendnewShop);
+  form.addEventListener('submit', appendNewShop);

@@ -162,3 +162,28 @@ const biznessHours = [
   
   generateTable();
   
+  const appendNewShop = (event) => {
+    event.preventDefault();
+    const city = event.target.city.value;
+    const minCustomers = event.target.minCustomers.value;
+    const maxCustomers = event.target.maxCustomers.value;
+    const cookiesPerCustomer = event.target.cookiesPerCustomer.value;
+    
+    let messages = [];
+    if (parseInt(minCustomers) > parseInt(maxCustomers)) {
+      messages.push('Minumum customers per hour cannot be greater than maximum customers per hour')
+    }
+    if (messages.length > 0) {
+      console.log(messages);
+    } else {
+      let newShop = new Shop(city, parseInt(minCustomers), parseInt(maxCustomers), parseFloat(cookiesPerCustomer));
+      allShops.push(newShop);
+      allCookieSales.push(newShop.dailyCookieCount);
+      const salesTable = document.querySelector('#sales-table');
+      salesTable.innerHTML = '';
+      generateTable();
+    }
+  }
+  
+  const form = document.querySelector('#form');
+  form.addEventListener('submit', appendnewShop);

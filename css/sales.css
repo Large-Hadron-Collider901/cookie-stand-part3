@@ -78,6 +78,7 @@ ul {
     position: relative; bottom: 30px; left: 900px;
     width:  900px;
     list-style: none;
+    
 }
 
 ol {
@@ -180,5 +181,14 @@ a:hover {
 }
 a:visited{
     color: #ffffff;
+
+}
+#salesTitle {
+ color: #ffffff;
+ background-color: orangered;
+}
+
+h1 {
+background-color: orangered;
 
 }

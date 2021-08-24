@@ -14,9 +14,10 @@ body {
 
 ul {
     display: inline-block;
-    position: relative; bottom: 30px; left: 900px; top: 50px;
-    width:  900px;
+    position: relative; bottom: 30px; left: 780px; top: 50px;
+    width:  800px;
     list-style: none;
+    background-color: orangered;
 } 
 ol {
     display: inline-block;
@@ -31,6 +32,7 @@ ol {
 li {
     display: inherit;
     padding: 10px;
+    background-color: orangered;
 }
 
 a:link {
@@ -90,11 +92,14 @@ h1, h2, h3 {
 font-family: 'Kurale', serif;
 }
 
+
 #shopTitle {
 font-size: 30px;
-position: absolute; top: 15px; left: 40px;
+position: absolute; top: 0px; left: 40px;
 color: palegoldenrod;
-
+background-color: orangered;
+height: 120px;
+width: 700px;
 }
 #about {
 color: orange;

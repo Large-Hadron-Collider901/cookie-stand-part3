@@ -1,28 +1,58 @@
 
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap'); 
 @import url('https://fonts.googleapis.com/css2?family=Kurale&family=Montserrat+Alternates&display=swap');
 
 
 html {
 width: 1500px;
-    
-}   
-    
-a {
+}  
+
+body {
+  background-color: orange;
+  font-family: 'Open Sans Condensed', sans-serif;  
+}
+
+ul {
+    display: inline-block;
+    position: relative; bottom: 30px; left: 900px; top: 50px;
+    width:  900px;
+    list-style: none;
+} 
+ol {
+    display: inline-block;
+    width:  650px;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding-right: 5px;
+    list-style: url('/assets/heart.png');
+    border-right: #ffffff 10px solid;
+}
+
+li {
+    display: inherit;
+    padding: 10px;
+}
+
+a:link {
+    width: 60px;
+    color: #fdfdfd;
+    font-size: 35px;
     text-decoration: none;
-    color: black;
+    padding: 20px;
+}
+a:hover {
+    color: #ffffff;
+    text-shadow: #fba534 3px 3px 3px;
+
+    transition: all 2s ease-in-out; 
+}
+a:visited{
+    color: #ffffff;
 
 }
-
-a:before {
-text-decoration: none;
-color: black;
-
-}
-
 section {
 width: 700px;
-background-color: rgb(241, 176, 102);
+background-color: rgb(255, 215, 170);
 margin-left: 30px;
 padding-left: 30px;
 padding-bottom: 30px;
@@ -58,6 +88,17 @@ margin-top: 90px;
   
 h1, h2, h3 {
 font-family: 'Kurale', serif;
+}
+
+#shopTitle {
+font-size: 30px;
+position: absolute; top: 15px; left: 40px;
+color: palegoldenrod;
+
+}
+#about {
+color: orange;
 
 
 }
+

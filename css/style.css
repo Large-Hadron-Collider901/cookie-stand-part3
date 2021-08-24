@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
- 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap'); 
 table {
 
 font-family:'Montserrat Alternates', sans-serif;
@@ -11,6 +11,173 @@ form {
     font-family:'Montserrat Alternates', sans-serif;
     text-size-adjust: 50px;
 
+}
 
+
+body {
+    background-color: #e97f06 ;
+    overflow: hidden;
+    font-family: 'Open Sans Condensed', sans-serif;       
+}
+
+/*
+============================================================================================================================
+=========================================================== THIS SECTION IS FOR SEMANTIC ELEMENTS ==========================
+============================================================================================================================
+*/
+
+header {
+    width: 100%;
+    height: 90px;
+    background-color: #f6c233;
+    color: #ffffff;
+    font-size: 35px;
+    text-align: right;
+}
+
+nav {
+    position:fixed;
+    top: 115px;
+    height: 50px;
+    width: 1000px;
+   
+}
+
+main {
+    position: absolute;
+    top: 190px;
+    background-color: #fbe391;
+    height: 560px;
+    width: 100%;
+    border-bottom: rgb(255, 173, 41) 15px solid;
+}
+
+
+footer {
+    position: absolute;
+    top: 743px;
+    font-size: 18px;
+    text-shadow: #ff7b00 1px 2px 1px, #fff01f 1px -1px 1px;   
+}
+
+/*
+============================================================================================================================
+=========================================================== THIS SECTION IS FOR ELEMENTS ===================================
+============================================================================================================================
+*/
+
+h1 {
+    padding: 15px;
+    font-size: 60px;
+    text-align: left;
+    
+}
+
+ul {
+    display: inline-block;
+    width:  300px;
+    list-style: none;
+}
+
+ol {
+    display: inline-block;
+    width:  650px;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding-right: 5px;
+    list-style: url('/assets/heart.png');
+    border-right: #ffffff 10px solid;
+}
+
+li {
+    display: inherit;
+    padding: 10px;
+}
+
+fieldset {
+    position: absolute;
+    top: 150px;
+    left: 700px;
+    width: 50px;
+ }
+ 
+ fieldset span {
+     padding: 5px;
+     font-size: 20px;
+
+ } 
+
+legend {
+    height:20x;
+    width: 545px;
+    margin-bottom: 5px;
+    font-size: 25px;
+    border-bottom: #e9901b 4px solid;
+}
+
+select {
+  background-color: #ffffff;
+  border: #ffbf34 2px solid;
+  border-radius: 20px;
+}
+
+input {
+    background-color: #ffffff;
+    font-size: 15px;
+    border: #fa9d24 2px solid;
+    border-radius: 20px;
+}
+
+table {
+    background-color: #fff;
+    margin-left: 35px;
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+}
+
+th {
+    padding: 10px;
+}
+
+header span {
+    width: auto;
+    height: auto;
+    padding-left: 8px;
+    color: #ffbb29;
+    font-size: 25px;
+    text-shadow: #ff9100 1px 1px 1px;
+}
+
+#cartContents  {
+    position: absolute;
+    top: 240px;
+    left: 700px;
+    padding: 30px;
+
+}
+
+
+/*
+============================================================================================================================
+=========================================================== THIS SECTION FOCUSES ON THE NAV SECTION ========================
+============================================================================================================================
+*/
+
+a:link {
+    width: 60px;
+    color: #ffffff;
+    font-size: 35px;
+    text-decoration: none;
+    padding: 20px;
+}
+a:hover {
+    color: #ffffff;
+    text-shadow: #F58634 3px 3px 3px;
+
+    transition: all 2s ease-in-out; 
+}
+a:visited{
+    color: #ffffff;
 
 }

@@ -1,196 +1,69 @@
-const biznessHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
-    
-  
-  class Shop {
-    constructor(city, minCustomers, maxCustomers, cookiesPerCustomer) {
-      this.city = city;
-      this.minCustomers = minCustomers;
-      this.maxCustomers = maxCustomers;
-      this.cookiesPerCustomer = cookiesPerCustomer;
-      this.dailyCookieTotal = 0;
-      this.dailyCookieCount = this.getCookiesPerDay();
+"use strict";
+// Cart constructor.
+const Cart = function (items) {
+    // this.items is an array of CartItem instances.
+    this.items = items;
+};
+
+Cart.prototype.addItem = function (product, quantity) {
+    // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+    let newItem = new CartItem(product, quantity); // Adding a new cart item
+    this.items.push(newItem); // here we are pushing the new item to the array
+    console.log(this.items); // debugger successful
+};
+
+Cart.prototype.saveToLocalStorage = function () {
+    // TODO: Fill in this instance method to save the contents of the cart to localStorage
+    localStorage.setItem("cart", JSON.stringify(this.items)); // stringify converts the array into a string so it is in the correct format
+    // setItem saves it to localStorage 
+};
+
+Cart.prototype.removeItem = function (item) {
+    // TODO: Fill in this instance method to remove one item from the cart.
+    // Note: You will have to decide what kind of parameter to pass in here!
+    for (let i = 0; i < this.items.length; i++) {
+        if (this.items[i].product === item) {
+            this.items.splice(i, 1); // this removes an item from the array
+        }
     }
-  
-    getCustomersPerHour() {
-      // generate a random number between minCustomers and maxCustomers
-      return Math.floor(
-        Math.random() * (this.maxCustomers - this.minCustomers + 1) +
-          this.minCustomers
-      );
-    }
-    getCookiesPerHour() {
-      // multiply customersPerHour by average cookies per customer
-      return Math.floor(this.getCustomersPerHour() * this.cookiesPerCustomer);
-    }
-    getCookiesPerDay() {
-      let totalCookies = 0;
-      const hourlySales = [];
-  
-      for (let i = 0; i < biznessHours.length; i++) {
-        // make cookiesPerHour a variable
-        let randCookies = this.getCookiesPerHour();
-        // add randCookies to end of hourlySales array
-        hourlySales.push(randCookies);
-        // add randCookies and totalCookies
-        totalCookies += randCookies;
-      }
-      // set cookie total for objects = to totalCookies
-      this.dailyCookieTotal = totalCookies;
-      // add dailyCookieTotal to end of hourlySales array
-      hourlySales.push(this.dailyCookieTotal);
-      // this.dailyCookieCount = hourlySales;
-      return hourlySales;
-    }
-    renderList() {
-   
-      const sales = this.dailyCookieCount;
-      // capture DOM element for heading that corresponds to this object's city property
-      const cityHeading = document.querySelector(`.${this.city}-heading`);
-      // set what'll display on the screen for cityHeading to city property
-      cityHeading.textContent = this.city;
-      // capture DOM element for list that corresponds to this object's city property
-      const unorderedList = document.querySelector(`.${this.city}-sales`);
-      for (let i = 0; i < biznessHours.length; i++) {
-      
-        const listItem = document.createElement('li');
-        // set what'll display on the screen to string that incorporates current business hour and it's corresponding sales
-        listItem.textContent = `${biznessHours[i]}: ${sales[i]} cookies`;
-        // append listItem element to end of unorderedList
-        unorderedList.appendChild(listItem);
-      }
-      // create element for total cookies sold in a day, set it's text content, then append to unorderedList
-      const total = document.createElement('li');
-      total.textContent = `Total: ${this.dailyCookieTotal} cookies`;
-      unorderedList.appendChild(total);
-    }
-  
-    renderTable() {
-      // assign value of dailyCookieCount to sales
-      const sales = this.dailyCookieCount;
-      // capture table in DOM
-      const salesTable = document.querySelector("#sales-table");
-      // capture DOM element for list that corresponds to this object's city property
-      const cityRow = document.createElement("tr");
-      // create row header
-      const rowHeader = document.createElement("th");
-      rowHeader.classList.add("capitalize");
-      rowHeader.textContent = this.city;
-      // append rowHeader to end of cityRow
-      cityRow.appendChild(rowHeader);
-      // length of sales
-      for (const sale of sales) {
-        // create table data element
-        const entry = document.createElement("td");
-        // assign text content to index in sales array
-        entry.textContent = sale;
-        // append entry to cityRow
-        cityRow.appendChild(entry);
-      }
-      // append cityRow to table in DOM
-      salesTable.appendChild(cityRow);
-    }
-  }
-  
-  const tableRowHeader = (arr) => {
-    // capture table in DOM
-    const salesTable = document.querySelector("#sales-table");
-    // create table rows + row header
-    const headerRow = document.createElement("tr");
-    const rowHeader = document.createElement("th");
-    headerRow.classList.add("hours");
-    // append rowHeader to headerRow
-    headerRow.appendChild(rowHeader);
-    for (const item of arr) {
-      // create table data element
-      const entry = document.createElement("td");
-      // assign text content to index in arr parameter
-      entry.textContent = item;
-      // append entry to headerRow
-      headerRow.appendChild(entry);
-    }
-    // create element for title of daily cookies sold + append to headerRow
-    const entry = document.createElement("td");
-    entry.textContent = "Daily Total";
-    // append entry to headerRow
-    headerRow.appendChild(entry);
-    // append header row to table in DOM
-    salesTable.appendChild(headerRow);
-  };
-  
-  const tableRowFooter = (arr) => {
-    // sum each indices of multi-dimensional array then add to array
-    const sums = arr[0].map((x, idx) =>
-      arr.reduce((sum, curr) => sum + curr[idx], 0)
-    );
-    // capture table in DOM
-    const salesTable = document.querySelector("#sales-table");
-    // create footer row and footer header elements
-    const footerRow = document.createElement("tr");
-    const footerHeader = document.createElement("th");
-    footerHeader.textContent = "Totals";
-    // append footerHeader to footerRow
-    footerRow.appendChild(footerHeader);
-    for (const idx of sums) {
-      // create table data element
-      const entry = document.createElement("td");
-      // assign text content to index in arr parameter
-      entry.textContent = idx;
-      // append entry to footerRow
-      footerRow.appendChild(entry);
-    }
-    // append footerRow to table in DOM
-    salesTable.appendChild(footerRow);
-  }
-  
-  let seattle = new Shop("Seattle", 23, 65, 6.3);
-  let tokyo = new Shop("Tokyo", 3, 24, 1.2);
-  let dubai = new Shop("Dubai", 11, 38, 3.7);
-  let paris = new Shop("Paris", 20, 38, 2.3);
-  let lima = new Shop("Lima", 2, 16, 4.6);
-  
-  const allShops = [seattle, tokyo, dubai, paris, lima];
-  
-  const allCookieSales = [
-    seattle.dailyCookieCount,
-    tokyo.dailyCookieCount,
-    dubai.dailyCookieCount,
-    paris.dailyCookieCount,
-    lima.dailyCookieCount,
-  ];
-  
-  const generateTable = () => {
-    tableRowHeader(biznessHours);
-    // for every shop in allShops array
-    for (shop of allShops) {
-      shop.renderTable();
-    }
-    tableRowFooter(allCookieSales);
-  }
-  
-  generateTable();
-  
-  const appendNewShop = (event) => {
-    event.preventDefault();
-    const city = event.target.city.value;
-    const minCustomers = event.target.minCustomers.value;
-    const maxCustomers = event.target.maxCustomers.value;
-    const cookiesPerCustomer = event.target.cookiesPerCustomer.value;
-    
-    let messages = [];
-    if (parseInt(minCustomers) > parseInt(maxCustomers)) {
-      messages.push('Minimum customers per hour cannot be greater than maximum customers per hour')
-    }
-    if (messages.length > 0) {
-      console.log(messages);
-    } else {
-      let newShop = new Shop(city, parseInt(minCustomers), parseInt(maxCustomers), parseFloat(cookiesPerCustomer));
-      allShops.push(newShop);
-      allCookieSales.push(newShop.dailyCookieCount);
-      const salesTable = document.querySelector('#sales-table');
-      salesTable.innerHTML = '';
-      generateTable();
-    }
-  }
-  
-  const form = document.querySelector('#form');
-  form.addEventListener('submit', appendNewShop);
+    this.saveToLocalStorage();
+};
+
+
+const CartItem = function (product, quantity) {
+    this.product = product;
+    this.quantity = quantity;
+};
+
+// Product constructor.
+const Product = function (filePath, name) {
+    this.filePath = filePath;
+    this.name = name;
+    Product.allProducts.push(this);
+};
+Product.allProducts = [];
+
+function generateCatalog() {
+    new Product("assets/bag.jpg", "Bag");
+    new Product("assets/banana.jpg", "Banana");
+    new Product("assets/bathroom.jpg", "Bathroom");
+    new Product("assets/boots.jpg", "Boots");
+    new Product("assets/breakfast.jpg", "Breakfast");
+    new Product("assets/bubblegum.jpg", "Bubblegum");
+    new Product("assets/chair.jpg", "Chair");
+    new Product("assets/cthulhu.jpg", "Cthulhu");
+    new Product("assets/dog-duck.jpg", "Dog-Duck");
+    new Product("assets/dragon.jpg", "Dragon");
+    new Product("assets/pen.jpg", "Pen");
+    new Product("assets/pet-sweep.jpg", "Pet Sweep");
+    new Product("assets/scissors.jpg", "Scissors");
+    new Product("assets/shark.jpg", "Shark");
+    new Product("assets/sweep.png", "Sweep");
+    new Product("assets/tauntaun.jpg", "Taun-Taun");
+    new Product("assets/unicorn.jpg", "Unicorn");
+    new Product("assets/water-can.jpg", "Water Can");
+    new Product("assets/wine-glass.jpg", "Wine Glass");
+}
+
+// Initialize the app by creating the big list of products with images and names
+generateCatalog();

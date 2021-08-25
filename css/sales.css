@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
 table {
 
 font-family:'Montserrat Alternates', sans-serif;
@@ -8,7 +9,7 @@ text-size-adjust: 50px;
 }
 
 form {
-    font-family:'Montserrat Alternates', sans-serif;
+    font-family: 'Electrolize', sans-serif;
     text-size-adjust: 50px;
 
 }
@@ -106,7 +107,7 @@ fieldset {
  fieldset span {
      padding: 5px;
      font-size: 20px;
-
+    
  } 
 
 legend {
@@ -136,6 +137,7 @@ table {
     width: 300px;
     height: auto;
     border-radius: 5px;
+    font-family: 'Electrolize', sans-serif;
 }
 
 th {
